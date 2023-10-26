@@ -1,20 +1,27 @@
+//-----------React-----------//
 import React from "react";
-import logo from "./logo.png";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+//-----------Imports-----------//
+import Home from "./Pages/Home";
+import Sightings from "./Pages/Sightings";
+
+//-----------Styling-----------//
 import "./App.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/sightings/:sightingIndex",
+      element: <Sightings />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+};
 
 export default App;
